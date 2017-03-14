@@ -1,21 +1,14 @@
+# TODO initialize_second_row_vector
 class RowVector < Vector
   class DoWithRowVector
+    include AttrFromHashInitializer
+    include AbstractCall
+
     attr_reader :first_row_vector, :second_row_vector
 
-    def initialize(attrs)
-      @first_row_vector  = initialize_first_row_vector(attrs)
-      @second_row_vector = initialize_second_row_vector(attrs)
-    end
-
-    def call
-      raise NotImplementedError
-    end
+    attr_from_hash_initializer :first_row_vector, :second_row_vector
 
     private
-      def initialize_first_row_vector(attrs)
-        attrs[:first_row_vector]
-      end
-
       def initialize_second_row_vector(attrs)
         RowVector.new(elements: attrs[:second_row_vector].to_a)
       end

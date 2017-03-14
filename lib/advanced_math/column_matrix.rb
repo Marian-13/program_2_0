@@ -5,17 +5,16 @@ require_relative 'column_matrix/do_with_row_vector'
 require_relative 'column_matrix/multiply_by_row_vector'
 
 class ColumnMatrix
+  include AttrFromHashInitializer
+
   attr_reader :columns
 
   # ==== Examples
   #
   # column_matrix_1 = ColumnMatrix.new(columns: [[1, 1], [2, 2]])
   # column_matrix_2 = ColumnMatrix.new(column_matrix_1)
-  def initialize(attrs)
-    attrs_hash = attrs.to_h
-    @columns = initialize_columns(attrs_hash)
-  end
-
+  attr_from_hash_initializer :columns
+  
   def add_column_matrix(column_matrix)
     AddColumnMatrix.new(
       first_column_matrix: self,

@@ -1,10 +1,10 @@
+# TODO initialize_value
 class Element
+  include AttrFromHashInitializer
+
   attr_reader :value
 
-  def initialize(attrs)
-    attrs_hash = attrs.to_h
-    @value = attrs[:value]
-  end
+  attr_from_hash_initializer :value
 
   %w{+ - * / % **}.each do |operator|
     define_method(operator) do |operand|

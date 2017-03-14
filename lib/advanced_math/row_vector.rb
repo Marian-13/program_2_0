@@ -5,17 +5,16 @@ require_relative 'row_vector/do_with_column_vector'
 require_relative 'row_vector/multiply_by_column_vector'
 
 class RowVector
+  include AttrFromHashInitializer
+
   attr_reader :elements
 
   # ==== Examples
   #
   # row_vector_1 = RowVector.new(elements: [1, 1, 1])
   # row_vector_2 = RowVector.new(row_vector_1)
-  def initialize(attrs)
-    attrs_hash = attrs.to_h
-    @elements = initialize_elements(attrs_hash)
-  end
-
+  attr_from_hash_initializer :elements
+  
   # ==== Examples
   #
   # row_vector_1.add_row_vector([1, 1, 1])
@@ -48,9 +47,4 @@ class RowVector
   def to_h
     { elements: elements }
   end
-
-  private
-    def initialize_elements(attrs_hash)
-      attrs_hash[:elements]
-    end
 end

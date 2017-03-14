@@ -1,3 +1,4 @@
+# TODO initialize_row_vector
 class ColumnVector < Vector
   class DoWithRowVector < Vector::DoWithTransposedVector
     private

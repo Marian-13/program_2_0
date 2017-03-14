@@ -6,16 +6,15 @@ require_relative 'matrix/do_with_vector'
 require_relative 'matrix/multiply_by_vector'
 
 class Matrix
+  include AttrFromHashInitializer
+
   attr_reader :elements
 
   # ==== Examples
   #
   # matrix_1 = Matrix.new(elements: [[1, 1], [2, 2]])
   # matrix_2 = Matrix.new(matrix_1)
-  def initialize(attrs)
-    attrs_hash = attrs.to_h
-    @elements = initialize_elements(attrs_hash)
-  end
+  attr_from_hash_initializer :elements
 
   def add_matrix(matrix)
     AddMatrix.new(first_matrix: self, second_matrix: matrix).call
@@ -47,9 +46,4 @@ class Matrix
   def to_h
     { elements: elements }
   end
-
-  private
-    def initialize_elements(attrs_hash)
-      attrs_hash[:elements]
-    end
 end

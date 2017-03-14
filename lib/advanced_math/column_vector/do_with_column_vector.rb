@@ -1,21 +1,14 @@
+# TODO initialize_second_column_vector
 class ColumnVector < Vector
   class DoWithColumnVector
+    include AttrFromHashInitializer
+    include AbstractCall
+
     attr_reader :first_column_vector, :second_column_vector
 
-    def initialize(attrs)
-      @first_column_vector  = initialize_first_column_vector(attrs)
-      @second_column_vector = initialize_second_column_vector(attrs)
-    end
-
-    def call
-      raise NotImplementedError
-    end
+    attr_from_hash_initializer :first_column_vector, :second_column_vector
 
     private
-      def initialize_first_column_vector(attrs)
-        attrs[:first_column_vector]
-      end
-
       def initialize_second_column_vector(attrs)
         ColumnVector.new(elements: attrs[:second_column_vector].to_a)
       end

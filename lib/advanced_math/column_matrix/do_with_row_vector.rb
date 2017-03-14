@@ -1,21 +1,13 @@
 class ColumnMatrix
   class DoWithRowVector
+    include AttrFromHashInitializer
+    include AbstractCall
+
     attr_reader :column_matrix, :row_vector
 
-    def initialize(attrs)
-      @column_matrix = initialize_column_matrix(attrs)
-      @row_vector    = initialize_row_vector(attrs)
-    end
-
-    def call
-      raise NotImplementedError
-    end
+    attr_from_hash_initializer :column_matrix, :row_vector
 
     private
-      def initialize_column_matrix(attrs)
-        attrs[:column_matrix]
-      end
-
       def initialize_row_vector(attrs)
         RowVector.new(elements: attrs[:row_vector].to_a)
       end

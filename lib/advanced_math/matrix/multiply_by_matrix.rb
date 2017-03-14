@@ -1,5 +1,6 @@
 require_relative 'multiply_by_matrix/standard_algorithm'
 
+# TODO algorithms
 class Matrix
   class MultiplyByMatrix < DoWithMatrix
     attr_reader :algorithm
