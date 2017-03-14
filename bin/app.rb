@@ -1,10 +1,4 @@
-require_relative '../lib/element'
-require_relative '../lib/vector'
-require_relative '../lib/column_vector'
-require_relative '../lib/row_vector'
-require_relative '../lib/matrix'
-require_relative '../lib/column_matrix'
-require_relative '../lib/row_matrix'
+require_relative '../lib/advanced_math'
 
 # TODO Matrix config
 # TODO Abstractions

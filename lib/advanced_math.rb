@@ -1,0 +1,7 @@
+require_relative 'advanced_math/element'
+require_relative 'advanced_math/vector'
+require_relative 'advanced_math/column_vector'
+require_relative 'advanced_math/row_vector'
+require_relative 'advanced_math/matrix'
+require_relative 'advanced_math/column_matrix'
+require_relative 'advanced_math/row_matrix'
