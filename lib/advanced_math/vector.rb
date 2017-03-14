@@ -15,6 +15,14 @@ class Vector
   # vector_2 = Vector.new(vector_1)
   attr_from_hash_initializer :elements
 
+  def [](index)
+    elements[index]
+  end
+
+  def size
+    elements.size
+  end
+
   # ==== Examples
   #
   # vector_1.add_vector([1, 1, 1])

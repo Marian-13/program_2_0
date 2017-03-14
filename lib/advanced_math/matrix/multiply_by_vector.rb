@@ -1,9 +1,8 @@
+# TODO Remove Magic 0.0
 class Matrix
   class MultiplyByVector < DoWithVector
     def call
-      matrix_elements = matrix.elements
-      vector_elements = vector.elements
-      size            = matrix_elements.size
+      size = matrix.size
 
       result = []
 
@@ -11,7 +10,7 @@ class Matrix
         result[i] = 0.0
 
         (0...size).each do |j|
-          result[i] += matrix_elements[i][j] * vector_elements[i]
+          result[i] += matrix[i][j] * vector[i]
         end
       end
 

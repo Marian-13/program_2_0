@@ -1,15 +1,13 @@
 class ColumnMatrix
   class AddColumnMatrix < DoWithColumnMatrix
     def call
-      first_matrix_columns  = first_column_matrix.columns
-      second_matrix_columns = second_column_matrix.columns
-      size                  = first_matrix_columns.size
+      size = first_column_matrix.size
 
       result = []
 
       (0...size).each do |i|
-        result[i] = first_matrix_columns[i].add_column_vector(
-          second_matrix_columns[i]
+        result[i] = first_column_matrix[i].add_column_vector(
+          second_column_matrix[i]
         )
       end
 

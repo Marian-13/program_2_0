@@ -1,10 +1,8 @@
 class RowMatrix
   class MultiplyByColumnVector < DoWithColumnVector
     def call
-      matrix_rows = row_matrix.rows
-
-      result = matrix_rows.map do |matrix_row|
-        matrix_row.multiply_by_column_vector(column_vector)
+      result = row_matrix.rows.map do |row_matrix_row|
+        row_matrix_row.multiply_by_column_vector(column_vector)
       end
 
       ColumnVector.new(elements: result)

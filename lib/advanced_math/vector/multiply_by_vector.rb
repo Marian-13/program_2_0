@@ -1,14 +1,14 @@
+# TODO Remove Magic 0.0
+# TODO Update return value
 class Vector
   class MultiplyByVector < DoWithVector
     def call
-      first_vector_elements  = first_vector.elements
-      second_vector_elements = second_vector.elements
-      size                   = first_vector_elements.size
+      size = first_vector.size
 
       result = 0.0
 
       (0...size).each do |i|
-        result += first_vector_elements[i] * second_vector_elements[i]
+        result += first_vector[i] * second_vector[i]
       end
 
       result

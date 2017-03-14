@@ -16,6 +16,14 @@ class Matrix
   # matrix_2 = Matrix.new(matrix_1)
   attr_from_hash_initializer :elements
 
+  def [](index)
+    elements[index]
+  end
+
+  def size
+    elements.size
+  end
+
   def add_matrix(matrix)
     AddMatrix.new(first_matrix: self, second_matrix: matrix).call
   end

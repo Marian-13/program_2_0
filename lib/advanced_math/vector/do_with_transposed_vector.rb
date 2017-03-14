@@ -1,3 +1,4 @@
+# TODO Is it required
 class Vector
   class DoWithTransposedVector
     include AttrFromHashInitializer

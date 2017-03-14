@@ -1,17 +1,15 @@
 class Vector
   class SubstractVector < DoWithVector
-    def call
-      first_vector_elements  = first_vector.elements
-      second_vector_elements = second_vector.elements
-      size                       = first_vector_elements.size
+    def call(returned_vector_class: vector_class)
+      size = first_vector.size
 
       result = []
 
       (0...size).each do |i|
-        result[i] = first_vector_elements[i] - second_vector_elements[i]
+        result[i] = first_vector[i] - second_vector[i]
       end
 
-      Vector.new(elements: result)
+      returned_vector_class.new(elements: result)
     end
   end
 end

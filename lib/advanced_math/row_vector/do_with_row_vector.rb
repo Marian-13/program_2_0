@@ -8,9 +8,8 @@ class RowVector < Vector
 
     attr_from_hash_initializer :first_row_vector, :second_row_vector
 
-    private
-      def initialize_second_row_vector(attrs)
-        RowVector.new(elements: attrs[:second_row_vector].to_a)
-      end
+    def row_vector_class
+      RowVector
+    end
   end
 end

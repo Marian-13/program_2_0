@@ -15,6 +15,14 @@ class ColumnVector
   # column_vector_2 = ColumnVector.new(column_vector)
   attr_from_hash_initializer :elements
 
+  def [](index)
+    elements[index]
+  end
+
+  def size
+    elements.size
+  end
+
   # ==== Examples
   #
   # column_vector_1.add_column_vector([1, 1, 1])

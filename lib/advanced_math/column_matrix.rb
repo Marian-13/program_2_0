@@ -14,7 +14,15 @@ class ColumnMatrix
   # column_matrix_1 = ColumnMatrix.new(columns: [[1, 1], [2, 2]])
   # column_matrix_2 = ColumnMatrix.new(column_matrix_1)
   attr_from_hash_initializer :columns
-  
+
+  def [](index)
+    columns[index]
+  end
+
+  def size
+    columns.size
+  end
+
   def add_column_matrix(column_matrix)
     AddColumnMatrix.new(
       first_column_matrix: self,

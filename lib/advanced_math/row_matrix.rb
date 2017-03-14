@@ -14,7 +14,15 @@ class RowMatrix
   # row_matrix_1 = RowMatrix.new(rows: [[1, 1], [2, 2]])
   # row_matrix_2 = RowMatrix.new(row_matrix_1)
   attr_from_hash_initializer :rows
-  
+
+  def [](index)
+    rows[index]
+  end
+
+  def size
+    rows.size
+  end
+
   def add_row_matrix(row_matrix)
     AddRowMatrix.new(
       first_row_matrix: self,
