@@ -1,4 +1,5 @@
 require_relative '../lib/advanced_math'
+require_relative '../lib/attr_from_hash_initializer'
 
 # TODO Matrix config
 # TODO Abstractions
@@ -8,12 +9,16 @@ require_relative '../lib/advanced_math'
 # TODO VectorParams MatrixParams... , update DoWith, reject to_h ???
 # TODO add, substract, multiply_by vector, array ..
 
-p column_matrix = ColumnMatrix.new(columns: [[1, 1], [2, 2]])
-p row_vector = RowVector.new(elements: [1, 1])
 
-p column_matrix.multiply_by_row_vector(row_vector)
+class Hello
+  extend AttrFromHashInitializer
 
-p row_matrix = RowMatrix.new(rows: [[1, 1], [2, 2]])
-p column_vector = ColumnVector.new(elements: [1, 1])
+  attr_reader :first, :second, :third
+  attr_from_hash_initializer :first, :second, :third
+end
 
-p row_matrix.multiply_by_column_vector(column_vector)
+hello_hash = { first: 1.0, second: 2.0, third: 3.0 }
+hello = Hello.new(hello_hash)
+p hello.first
+p hello.second
+p hello.third
