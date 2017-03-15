@@ -6,26 +6,16 @@ class RowMatrix
         size = row_matrix.size
 
         result = []
-        # threads = []
-
-        queue = Queue.new
-        queue << free_threads_amount
 
         (0...size).each do |i|
           result[i] = []
 
-          (0...size).each do |j|
-            while free_threads_amount != 0
-              Thread.new {
-                result[i][j] = row_matrix[j].multiply_by_column_vector(column_matrix[i])
-              }.join
-            else
-
+          Thread.new {
+            (0...size).each do |j|
+              result[i][j] = row_matrix[j].multiply_by_column_vector(column_matrix[i])
             end
-          end
+          }.join
         end
-
-        # threads.each { |thread| thread.join }
 
         ColumnMatrix.new(columns: result)
       end
