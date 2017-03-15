@@ -1,8 +1,10 @@
+require_relative 'row_matrix/do_with_column_vector'
+require_relative 'row_matrix/multiply_by_column_vector'
+require_relative 'row_matrix/do_with_column_matrix'
+require_relative 'row_matrix/multiply_by_column_matrix'
 require_relative 'row_matrix/do_with_row_matrix'
 require_relative 'row_matrix/add_row_matrix'
 require_relative 'row_matrix/substract_row_matrix'
-require_relative 'row_matrix/do_with_column_vector'
-require_relative 'row_matrix/multiply_by_column_vector'
 
 class RowMatrix
   include AttrFromHashInitializer
@@ -44,6 +46,19 @@ class RowMatrix
     ).call
   end
 
+  # Multiplies by column matrix
+  #
+  # ==== Options
+  #
+  # * +:algorithm+ Algorithm used to perform multiplication.
+  #                Allowed values: :standard (by default), :scalar_products
+  def multiply_by_column_matrix(column_matrix, opts = {})
+    MultiplyByColumnMatrix.new(
+      row_matrix: self,
+      column_matrix: column_matrix
+    ).call(opts)
+  end
+
   def to_a
     rows
   end
@@ -54,6 +69,6 @@ class RowMatrix
 
   private
     def initialize_rows(attrs_hash)
-      attrs_hash[:rows].map { |row| RowVector.new(elements: row.to_a) }
+      attrs_hash[:rows].map { |row| RowVector.new(elements: row) }
     end
 end

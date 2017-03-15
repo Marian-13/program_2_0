@@ -1,9 +1,10 @@
+require_relative 'matrix/do_with_vector'
+require_relative 'matrix/multiply_by_vector'
 require_relative 'matrix/do_with_matrix'
 require_relative 'matrix/add_matrix'
 require_relative 'matrix/substract_matrix'
 require_relative 'matrix/multiply_by_matrix'
-require_relative 'matrix/do_with_vector'
-require_relative 'matrix/multiply_by_vector'
+require_relative 'matrix/do_with_transposed_matrix'
 
 class Matrix
   include AttrFromHashInitializer

@@ -1,8 +1,10 @@
+require_relative 'column_matrix/do_with_row_vector'
+require_relative 'column_matrix/multiply_by_row_vector'
 require_relative 'column_matrix/do_with_column_matrix'
 require_relative 'column_matrix/add_column_matrix'
 require_relative 'column_matrix/substract_column_matrix'
-require_relative 'column_matrix/do_with_row_vector'
-require_relative 'column_matrix/multiply_by_row_vector'
+require_relative 'column_matrix/do_with_row_matrix'
+require_relative 'column_matrix/multiply_by_row_matrix'
 
 class ColumnMatrix
   include AttrFromHashInitializer
@@ -44,6 +46,13 @@ class ColumnMatrix
     ).call
   end
 
+  def multiply_by_row_matrix(row_matrix)
+    MultiplyByRowMatrix.new(
+      column_matrix: self,
+      row_matrix: row_matrix
+    ).call
+  end
+
   def to_a
     columns
   end
@@ -55,7 +64,7 @@ class ColumnMatrix
   private
     def initialize_columns(attrs_hash)
       attrs_hash[:columns].map do |column|
-        ColumnVector.new(elements: column.to_a)
+        ColumnVector.new(elements: column)
       end
     end
 end
